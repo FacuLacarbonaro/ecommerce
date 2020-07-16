@@ -5,10 +5,14 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 
 import AmazonLogo from "../../sass/assets/img/png/amazon-logo.png";
+import { useStateValue } from "../../Context/StateProvider";
 
 
 
 const Header = () => {
+
+  const [{basket}, dispatch] = useStateValue();
+
   return (
     <div className="header">
       <Link to="/">
@@ -46,7 +50,7 @@ const Header = () => {
         <Link className="header__nav-link" to='/checkout'>
             <div className='header__nav-link-optionBasket'>
                 <ShoppingBasketIcon/>
-                <span className='header__nav-link-option-lineTwo header__nav-link-optionBasket__basketCount'>0</span>
+                <span className='header__nav-link-option-lineTwo header__nav-link-optionBasket__basketCount'> {basket?.length} </span>
             </div>
         </Link>
 
